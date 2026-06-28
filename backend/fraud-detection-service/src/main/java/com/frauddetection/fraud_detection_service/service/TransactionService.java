@@ -8,12 +8,30 @@ import org.springframework.stereotype.Service;
 public class TransactionService {
 
     private final TransactionRepository repository;
+    private final FraudScoringService fraudScoringService;
+    private final DecisionService decisionService;
 
-    public TransactionService(TransactionRepository repository) {
+    public TransactionService(
+            TransactionRepository repository,
+            FraudScoringService fraudScoringService,
+            DecisionService decisionService) {
+
         this.repository = repository;
+        this.fraudScoringService = fraudScoringService;
+        this.decisionService = decisionService;
     }
 
     public Transaction saveTransaction(Transaction transaction) {
+
+        double riskScore =
+                fraudScoringService.calculateRiskScore(transaction);
+
+        String decision =
+                decisionService.evaluateDecision(riskScore);
+
+        transaction.setRiskScore(riskScore);
+        transaction.setDecision(decision);
+
         return repository.save(transaction);
     }
 }

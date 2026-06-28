@@ -19,6 +19,7 @@ public class Transaction {
     private String transactionType; //will come from ML model
     private String deviceId; //supports fraud patterns
     private Double riskScore; //classification feature
+    private String decision;
 
     public Transaction() {
         this.timestamp = LocalDateTime.now();
@@ -63,5 +64,37 @@ public class Transaction {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDecision() {
+        return decision;
+    }
+
+    public void setDecision(String decision) {
+        this.decision = decision;
+    }      
+    
+    public Double getRiskScore() {
+        return riskScore;
+    }
+
+    public void setRiskScore(Double riskScore) {
+        this.riskScore = riskScore;
+    }
+    
+    public String getTransactionType() {
+    return transactionType;
+    }
+
+    public void setTransactionType(String transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        this.deviceId = deviceId;
     }
 }
