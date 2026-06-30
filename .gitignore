@@ -24,3 +24,9 @@ Thumbs.db
 
 # Java compiled files
 *.class
+
+# Python
+venv/
+**/venv/
+**/__pycache__/
+*.pyc
