@@ -30,3 +30,6 @@ venv/
 **/venv/
 **/__pycache__/
 *.pyc
+
+# Kaggle Dataset
+ml-service/data/raw/
