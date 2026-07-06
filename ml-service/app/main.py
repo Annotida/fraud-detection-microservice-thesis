@@ -1,12 +1,9 @@
 from fastapi import FastAPI
+from app.predict import router
 
 app = FastAPI(
     title="Fraud Detection ML Service",
-    version="1.0.0"
+    version="1.0"
 )
 
-@app.get("/")
-def home():
-    return {
-        "message": "Fraud Detection ML Service is running"
-    }
+app.include_router(router)
