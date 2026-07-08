@@ -1,19 +1,23 @@
-"""
-Feature Engineering Module
+from app.schemas import TransactionRequest
 
-This module will transform incoming banking transactions
-into numerical features suitable for machine learning inference.
 
-Current status:
-- Placeholder for future feature engineering.
-- Will be expanded when integrating Spring Boot with the ML model.
-"""
+def build_features(transaction: TransactionRequest):
 
-def prepare_features(transaction):
     """
-    Placeholder function.
-
-    Future implementation will convert the transaction
-    into a numerical feature vector.
+    Builds a 30-feature vector expected by the Random Forest model.
+    This is Version 1 of the feature engineering pipeline.
     """
-    return transaction
+
+    features = [
+
+        # Time
+        0,
+
+        # V1 - V28 placeholders
+        *([0] * 28),
+
+        # Amount
+        transaction.amount
+    ]
+
+    return [features]

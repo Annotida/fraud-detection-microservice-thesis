@@ -21,6 +21,9 @@ public class Transaction {
     private Double riskScore; //classification feature
     private String decision;
 
+    private Integer mlPrediction;
+    private Double mlConfidence;
+
     public Transaction() {
         this.timestamp = LocalDateTime.now();
         this.status = "RECEIVED";
@@ -97,4 +100,20 @@ public class Transaction {
     public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
     }
-}
+
+    public Integer getMlPrediction() {
+        return mlPrediction;
+    }
+
+    public void setMlPrediction(Integer mlPrediction) {
+        this.mlPrediction = mlPrediction;
+    }
+
+    public Double getMlConfidence() {
+        return mlConfidence;
+    }
+
+    public void setMlConfidence(Double mlConfidence) {
+        this.mlConfidence = mlConfidence;
+    }    
+    }
