@@ -7,3 +7,18 @@ app = FastAPI(
 )
 
 app.include_router(router)
+
+
+@app.get("/")
+def home():
+    return {
+        "service": "Fraud Detection ML API",
+        "status": "Running"
+    }
+
+
+@app.get("/health")
+def health():
+    return {
+        "status": "UP"
+    }

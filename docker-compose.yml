@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: fraud-postgres
+
+    environment:
+      POSTGRES_DB: fraud_detection
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  fraud-ml:
+    image: fraud-ml-service
+    container_name: fraud-ml
+
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - postgres
+
+  fraud-backend:
+    image: fraud-backend
+    container_name: fraud-backend
+
+    ports:
+      - "5050:5050"
+
+    depends_on:
+      - postgres
+      - fraud-ml
+
+volumes:
+  postgres_data:

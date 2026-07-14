@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class MLPredictionService {
 
     private static final String ML_API =
-            "http://127.0.0.1:8000/predict";
+        "http://fraud-ml:8000/predict";
 
     private final RestTemplate restTemplate = new RestTemplate();
 
