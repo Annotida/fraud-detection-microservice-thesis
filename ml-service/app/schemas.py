@@ -10,7 +10,7 @@ class TransactionRequest(BaseModel):
 
 
 class PredictionResponse(BaseModel):
-    prediction: int
+    prediction: str
     confidence: float
     
 #This file defines exactly what Spring Boot is allowed to send

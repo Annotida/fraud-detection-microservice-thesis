@@ -21,7 +21,7 @@ public class Transaction {
     private Double riskScore; //classification feature
     private String decision;
 
-    private Integer mlPrediction;
+    private String mlPrediction;
     private Double mlConfidence;
 
     public Transaction() {
@@ -101,11 +101,11 @@ public class Transaction {
         this.deviceId = deviceId;
     }
 
-    public Integer getMlPrediction() {
+    public String getMlPrediction() {
         return mlPrediction;
     }
 
-    public void setMlPrediction(Integer mlPrediction) {
+    public void setMlPrediction(String mlPrediction) {
         this.mlPrediction = mlPrediction;
     }
 

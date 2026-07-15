@@ -2,17 +2,17 @@ package com.frauddetection.fraud_detection_service.dto;
 
 public class PredictionResponse {
 
-    private Integer prediction;
+    private String prediction;
     private Double confidence;
 
     public PredictionResponse() {
     }
 
-    public Integer getPrediction() {
+    public String getPrediction() {
         return prediction;
     }
 
-    public void setPrediction(Integer prediction) {
+    public void setPrediction(String prediction) {
         this.prediction = prediction;
     }
 
