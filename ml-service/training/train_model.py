@@ -42,7 +42,8 @@ def main():
     evaluate(
         random_forest,
         X_test,
-        y_test
+        y_test,
+        "random_forest"
     )
 
     # --------------------------
@@ -59,7 +60,8 @@ def main():
     evaluate(
         logistic,
         X_test,
-        y_test
+        y_test,
+        "logistic_regression"
     )
 
     # --------------------------

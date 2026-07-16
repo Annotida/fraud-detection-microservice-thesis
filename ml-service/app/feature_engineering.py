@@ -9,12 +9,6 @@ from app.risk_profiles import (
     AMOUNT_THRESHOLDS
 )
 
-KNOWN_DEVICES = {
-    "DEVICE001",
-    "DEVICE002",
-    "DEVICE003"
-}
-
 
 def build_features(transaction: TransactionRequest):
 
@@ -34,19 +28,19 @@ def build_features(transaction: TransactionRequest):
     # Merchant score
     merchant_score = MERCHANT_RISK.get(
         transaction.merchant,
-        0.5
+        0.2
     )
 
     # Location score
     location_score = LOCATION_RISK.get(
         transaction.location,
-        0.5
+        0.2
     )
 
     # Transaction type score
     transaction_score = TRANSACTION_TYPE_RISK.get(
         transaction.transactionType,
-        0.5
+        0.3
     )
 
     # Amount score
@@ -89,7 +83,9 @@ def build_features(transaction: TransactionRequest):
     )
 
     # Weekend placeholder
-    weekend = 0
+    weekday = datetime.now().weekday()
+
+    weekend = 1 if weekday >= 5 else 0
 
     features = [
 

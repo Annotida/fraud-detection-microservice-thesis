@@ -8,7 +8,7 @@ from sklearn.metrics import (
 )
 
 
-def evaluate(model, X_test, y_test):
+def evaluate(model, X_test, y_test, model_name):
 
     predictions = model.predict(X_test)
 
@@ -32,7 +32,7 @@ def evaluate(model, X_test, y_test):
     print("\nClassification Report")
     print(report)
 
-    with open("results/metrics.txt", "w") as file:
+    with open(f"results/{model_name}_metrics.txt", "w") as file:
 
         file.write("MODEL EVALUATION\n")
         file.write("=========================\n\n")

@@ -1,0 +1,7 @@
+Performance Evaluation Notes
+
+• All REST endpoints returned HTTP 200.
+• Docker containers remained stable during testing.
+• Transactions were successfully persisted in PostgreSQL.
+• The statistics endpoint accurately reflected the database contents.
+• Response times remained below the target threshold.

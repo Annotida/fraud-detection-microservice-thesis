@@ -1,0 +1,9 @@
+API Performance Results
+
+| Endpoint | Method | Status | Response Time (ms) | Size |
+|----------|--------|--------|--------------------|------|
+| /api/transactions | POST | 200 | 145 | 1.2 KB |
+| /api/transactions | GET | 200 | 42 | 3.5 KB |
+| /api/transactions/{id} | GET | 200 | 18 | 1.1 KB |
+| /api/transactions/decision/REVIEW | GET | 200 | 30 | 2.4 KB |
+| /api/transactions/stats | GET | 200 | 15 | 0.3 KB |

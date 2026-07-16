@@ -14,6 +14,8 @@ def predict(transaction: TransactionRequest):
 
     prediction = int(model.predict(features)[0])
     probability = float(model.predict_proba(features)[0][1])
+    
+    print(f"Fraud Probability : {probability:.6f}")
 
     prediction_label = (
         "FRAUD"
