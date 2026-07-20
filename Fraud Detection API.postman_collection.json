@@ -1,0 +1,363 @@
+{
+  "info": {
+    "_postman_id": "6587509f-1fd5-4ceb-a670-9d3f0ffe595f",
+    "name": "Fraud Detection API",
+    "description": "A REST API for detecting fraudulent banking transactions using a Java Spring Boot microservice integrated with a Python Random Forest machine learning model.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56120358",
+    "_collection_link": "https://go.postman.co/collection/56120358-6587509f-1fd5-4ceb-a670-9d3f0ffe595f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Validation Tests",
+      "item": [
+        {
+          "name": "Unknown Merchant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 1500,\r\n    \"merchant\": \"CryptoExchange\",\r\n    \"country\": \"South Africa\",\r\n    \"location\": \"Johannesburg\",\r\n    \"transactionType\": \"ONLINE\",\r\n    \"deviceId\": \"Mobile\",\r\n    \"preferredDevice\": \"Mobile\",\r\n    \"persona\": \"Professional\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5050/api/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unknown Persona",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 1500,\r\n    \"merchant\": \"Amazon\",\r\n    \"country\": \"South Africa\",\r\n    \"location\": \"Johannesburg\",\r\n    \"transactionType\": \"ONLINE\",\r\n    \"deviceId\": \"Mobile\",\r\n    \"preferredDevice\": \"Mobile\",\r\n    \"persona\": \"Alien\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5050/api/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unknown Device",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 1500,\r\n    \"merchant\": \"Amazon\",\r\n    \"country\": \"South Africa\",\r\n    \"location\": \"Johannesburg\",\r\n    \"transactionType\": \"ONLINE\",\r\n    \"deviceId\": \"Spaceship\",\r\n    \"preferredDevice\": \"Mobile\",\r\n    \"persona\": \"Professional\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5050/api/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Missing Merchant",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 1500,\r\n    \"country\": \"South Africa\",\r\n    \"location\": \"Johannesburg\",\r\n    \"transactionType\": \"ONLINE\",\r\n    \"deviceId\": \"Mobile\",\r\n    \"preferredDevice\": \"Mobile\",\r\n    \"persona\": \"Professional\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5050/api/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Contains negative test cases used to verify the API's validation and exception handling by submitting invalid transaction data to the machine learning service"
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Submit Legitimate Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 1500,\r\n    \"merchant\": \"Amazon\",\r\n    \"country\": \"South Africa\",\r\n    \"location\": \"Johannesburg\",\r\n    \"transactionType\": \"ONLINE\",\r\n    \"deviceId\": \"Mobile\",\r\n    \"preferredDevice\": \"Mobile\",\r\n    \"persona\": \"Professional\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5050/api/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Submit High-Risk Transaction",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"amount\": 85000,\r\n    \"merchant\": \"LuxuryJewelry\",\r\n    \"country\": \"Nigeria\",\r\n    \"location\": \"Lagos\",\r\n    \"transactionType\": \"ONLINE\",\r\n    \"deviceId\": \"Laptop\",\r\n    \"preferredDevice\": \"Mobile\",\r\n    \"persona\": \"High Risk\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5050/api/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5050/api/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Transaction by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5050/api/transactions/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Contains the primary endpoints for submitting new banking transactions and retrieving stored transaction records from the fraud detection system"
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Statistics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5050/api/transactions/stats",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions",
+                "stats"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Approved Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5050/api/transactions/decision/APPROVE",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions",
+                "decision",
+                "APPROVE"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Review Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5050/api/transactions/decision/REVIEW",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions",
+                "decision",
+                "REVIEW"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Rejected Transactions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5050/api/transactions/decision/REJECT",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5050",
+              "path": [
+                "api",
+                "transactions",
+                "decision",
+                "REJECT"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Contains reporting and analytics endpoints for retrieving transaction statistics and filtering transactions based on fraud detection decisions"
+    }
+  ]
+}

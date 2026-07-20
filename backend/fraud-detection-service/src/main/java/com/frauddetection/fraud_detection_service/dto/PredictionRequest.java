@@ -2,22 +2,6 @@ package com.frauddetection.fraud_detection_service.dto;
 
 public class PredictionRequest {
 
-    // ==========================================================
-    // KAGGLE MODEL (ARCHIVED)
-    // ==========================================================
-    //
-    // private Double amount;
-    // private String merchant;
-    // private String location;
-    // private String transactionType;
-    // private String deviceId;
-    //
-    // Previous DTO used for the Kaggle Random Forest model.
-    // Retained for dissertation comparison.
-    //
-    // ==========================================================
-    // BUSINESS MODEL (ACTIVE)
-    // ==========================================================
 
     private Double amount;
 
