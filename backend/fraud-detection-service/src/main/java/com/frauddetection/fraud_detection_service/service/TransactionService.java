@@ -38,13 +38,28 @@ public class TransactionService {
 
         String decision = decisionService.evaluateDecision(riskScore);
 
-        PredictionRequest request = new PredictionRequest();
+        /*PredictionRequest request = new PredictionRequest();   old logic for kaggle dataset
 
         request.setAmount(transaction.getAmount());
         request.setMerchant(transaction.getMerchant());
         request.setLocation(transaction.getLocation());
         request.setTransactionType(transaction.getTransactionType());
+        request.setDeviceId(transaction.getDeviceId());*/
+
+        // ==========================================================
+        // BUSINESS MODEL REQUEST (ACTIVE)
+        // ==========================================================
+
+        PredictionRequest request = new PredictionRequest();
+
+        request.setAmount(transaction.getAmount());
+        request.setMerchant(transaction.getMerchant());
+        request.setCountry(transaction.getCountry());
+        request.setTransactionType(transaction.getTransactionType());
         request.setDeviceId(transaction.getDeviceId());
+        request.setPreferredDevice(transaction.getPreferredDevice());
+        request.setPersona(transaction.getPersona());
+        request.setHour(transaction.getTimestamp().getHour());
 
         PredictionResponse response = mlPredictionService.predict(request);
 

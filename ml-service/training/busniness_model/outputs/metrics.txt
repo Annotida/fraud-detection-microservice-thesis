@@ -1,0 +1,8 @@
+Business Fraud Detection Model Evaluation
+==================================================
+
+Accuracy : 0.9470
+Precision: 0.9389
+Recall   : 0.9081
+F1 Score : 0.9232
+AUC ROC  : 0.9898

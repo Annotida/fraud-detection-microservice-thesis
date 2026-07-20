@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from app.schemas import TransactionRequest, PredictionResponse
 from app.model_loader import model
 from app.feature_engineering import build_features
@@ -9,12 +10,12 @@ router = APIRouter()
 @router.post("/predict", response_model=PredictionResponse)
 def predict(transaction: TransactionRequest):
 
-    # Build feature vector
     features = build_features(transaction)
 
     prediction = int(model.predict(features)[0])
+
     probability = float(model.predict_proba(features)[0][1])
-    
+
     print(f"Fraud Probability : {probability:.6f}")
 
     prediction_label = (
@@ -29,23 +30,52 @@ def predict(transaction: TransactionRequest):
         else (1 - probability) * 100
     )
 
-    # ============================
-    # Logging
-    # ============================
+    # ==========================================================
+    # KAGGLE LOGGING (ARCHIVED)
+    # ==========================================================
+    #
+    # print("\n====================================================")
+    # print("           AI FRAUD DETECTION PREDICTION")
+    # print("====================================================")
+    #
+    # print(f"Amount              : R{transaction.amount}")
+    # print(f"Merchant            : {transaction.merchant}")
+    # print(f"Location            : {transaction.location}")
+    # print(f"Transaction Type    : {transaction.transactionType}")
+    # print(f"Device ID           : {transaction.deviceId}")
+    #
+    # print("----------------------------------------------------")
+    #
+    # print("Feature Vector")
+    # print(features)
+    #
+    # print("----------------------------------------------------")
+    #
+    # print(f"Prediction          : {prediction_label}")
+    # print(f"Confidence          : {confidence:.2f}%")
+    #
+    # print("====================================================\n")
+
+    # ==========================================================
+    # BUSINESS MODEL LOGGING (ACTIVE)
+    # ==========================================================
 
     print("\n====================================================")
-    print("           AI FRAUD DETECTION PREDICTION")
+    print("      BUSINESS FRAUD DETECTION PREDICTION")
     print("====================================================")
 
     print(f"Amount              : R{transaction.amount}")
     print(f"Merchant            : {transaction.merchant}")
-    print(f"Location            : {transaction.location}")
+    print(f"Country             : {transaction.country}")
     print(f"Transaction Type    : {transaction.transactionType}")
     print(f"Device ID           : {transaction.deviceId}")
+    print(f"Preferred Device    : {transaction.preferredDevice}")
+    print(f"Persona             : {transaction.persona}")
+    print(f"Hour                : {transaction.hour}")
 
     print("----------------------------------------------------")
 
-    print("Feature Vector")
+    print("Encoded Features")
 
     print(features)
 
