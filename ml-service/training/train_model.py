@@ -94,13 +94,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#Random Forest is the selected model
-#The Random Forest model outperformed Logistic Regression on every evaluation metric.
-#For a fraud detection system, the most important metric is often recall,
-# because missing fraudulent transactions (false negatives) can be more costly than investigating a few legitimate ones.
-
-#Your results:
-#Logistic Regression Recall = 70.41%
-#Random Forest Recall = 81.63%
-#Random Forest detected 11% more fraud cases than Logistic Regression on this test set.

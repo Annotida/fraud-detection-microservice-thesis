@@ -36,23 +36,6 @@ def root():
 @app.get("/health")
 def health():
 
-    # ==========================================================
-    # KAGGLE MODEL HEALTH (ARCHIVED)
-    # ==========================================================
-    #
-    # return {
-    #     "status": "UP",
-    #     "service": "Fraud Detection ML Service",
-    #     "model": "Random Forest",
-    #     "model_loaded": model is not None,
-    #     "version": "1.0.0",
-    #     "features": 30
-    # }
-
-    # ==========================================================
-    # BUSINESS MODEL HEALTH (ACTIVE)
-    # ==========================================================
-
     return {
         "status": "UP",
         "service": "Fraud Detection ML Service",
