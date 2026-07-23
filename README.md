@@ -35,14 +35,14 @@ Dr Jovan Pehcevski
 
 ### Features:
 
--Fraud Detection REST API
--Machine Learning Prediction
--Random Forest Model
--PostgreSQL Database
--Docker Deployment
--Swagger Documentation
--Apache JMeter Performance Testing
--Statistics Endpoint
+- Fraud Detection REST API
+- Machine Learning Prediction
+- Random Forest Model
+- PostgreSQL Database
+- Docker Deployment
+- Swagger Documentation
+- Apache JMeter Performance Testing
+- Statistics Endpoint
 
 ### System Architecture:
 
@@ -64,26 +64,36 @@ Dr Jovan Pehcevski
 
 ### Folder Structure:
 
--backend/
--ml-service/
--postman/
--evaluation/
--README.md
--.gitignore
--LICENSE
--docker-compose.yml
+- backend/
+- ml-service/
+- postman/
+- evaluation/
+- README.md
+- .gitignore
+- LICENSE
+- docker-compose.yml
 
 
 ### Installation:
 
--git clone https://github.com/Annotida/fraud-detection-microservice-thesis.git
--cd fraud-detection-microservice-thesis
--docker compose up --build
+- git clone https://github.com/Annotida/fraud-detection-microservice-thesis.git
+- cd fraud-detection-microservice-thesis
+- docker compose up --build
 
 
 ### API Endpoint:
 
 /api/transactions
+
+### Machine Learning Development
+
+During the development of this project, two machine learning models were evaluated.
+
+The initial prototype was trained using the publicly available Kaggle Credit Card Fraud Detection dataset. This dataset was selected because it is widely used in fraud detection research and provided a reliable benchmark for developing and validating the machine learning pipeline, REST API integration, and overall system architecture.
+
+As the project progressed, the implementation was enhanced by replacing the initial dataset with a business-oriented synthetic banking transaction dataset. Unlike the Kaggle dataset, which primarily contains anonymised numerical features, the business-oriented dataset includes realistic banking attributes such as customer profiles, merchant information, transaction types, countries, currencies, timestamps, and transaction amounts.
+
+This transition allowed the final fraud detection microservice to better represent real-world banking scenarios and produce predictions using transaction data that more closely resembles those processed by modern financial institutions.
 
 ### Performance Results:
 
@@ -113,6 +123,6 @@ The results demonstrate that the system achieves high predictive performance whi
 
 This repository accompanies the undergraduate honours dissertation submitted to the Open Institute of Technology (OPIT), Malta.
 
--It contains the complete implementation of the proposed fraud detection microservice, including the backend application, machine learning service, Docker configuration, database scripts, API collection, and evaluation resources.
+It contains the complete implementation of the proposed fraud detection microservice, including the backend application, machine learning service, Docker configuration, database scripts, API collection, and evaluation resources.
 
--The repository is intended for academic, research, and demonstration purposes.
+The repository is intended for academic, research, and demonstration purposes.
