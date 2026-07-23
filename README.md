@@ -17,25 +17,30 @@ This project presents the design and implementation of an AI-driven fraud detect
 deployed alongside a Java Spring Boot REST API. 
 The system demonstrates how cloud-native microservices and machine learning can be combined to improve fraud detection while maintaining low response times and high prediction accuracy.
 
-**Student**
+### Table of Contents
 
-Anotida Mangwanda
+- [Project Overview](#design-and-development-of-an-ai-driven-real-time-fraud-detection-microservice-using-java-spring-boot-and-machine-learning-for-banking-transactions)
+- [Features](#features)
+- [System Architecture](#system-architecture)
+- [Technology Stack](#technology-stack)
+- [Folder Structure](#folder-structure)
+- [Evaluation](#evaluation)
+- [Installation](#installation)
+- [API Endpoint](#api-endpoint)
+- [Machine Learning Development](#machine-learning-development)
+- [Performance Results](#performance-results)
+- [Future Improvements](#future-improvements)
+- [Repository Information](#repository-information)
 
-**Institution**
+## Dissertation Information
 
-Open Institute of Technology (OPIT), Malta
-
-**Programme**
-
-BSc (Hons) Modern Computer Science
-
-**Supervisor**
-
-Dr Jovan Pehcevski
-
-**Year**
-
-2026
+| Item | Details |
+|------|---------|
+| Student | Anotida Mangwanda |
+| Institution | Open Institute of Technology (OPIT), Malta |
+| Programme | BSc (Hons) Modern Computer Science |
+| Supervisor | Dr Jovan Pehcevski |
+| Year | 2026 |
 
 ### Features:
 
@@ -52,12 +57,19 @@ Dr Jovan Pehcevski
 
 The solution follows a microservice-based architecture where the Java Spring Boot backend receives incoming banking transactions through a REST API. Transactions are forwarded to a Python FastAPI machine learning service, which returns a fraud prediction. Based on the prediction score, the backend applies business decision thresholds to approve, review, or reject the transaction before storing the result in PostgreSQL. Docker Compose orchestrates all services, ensuring consistent deployment and communication between components.
 
+<h2>System Architecture</h2>
+
 <p align="center">
-  <a href="evaluation/notes/system-architecture-diagram.jpg">
-    <img src="evaluation/notes/system-architecture-diagram.jpg"
-         alt="System Architecture"
-         width="700">
+  <a href="./evaluation/notes/system_architecture_diagram.jpg">
+    <img
+      src="./evaluation/notes/system_architecture_diagram.jpg"
+      alt="System Architecture Diagram"
+      width="750">
   </a>
+</p>
+
+<p align="center">
+<i>Figure 1. High-level architecture of the AI-Driven Fraud Detection Microservice.</i>
 </p>
 
 ### Technology Stack:
@@ -75,16 +87,31 @@ The solution follows a microservice-based architecture where the Java Spring Boo
 
 
 ### Folder Structure:
+```text
+fraud-detection-microservice-thesis/
+│
+├── backend/
+├── ml-service/
+├── postman/
+├── evaluation/
+│   ├── notes/
+│   ├── screenshots/
+│   ├── results/
+│   └── jmeter_tests/
+├── README.md
+├── LICENSE
+├── docker-compose.yml
+└── .gitignore
+```
 
-- backend/
-- ml-service/
-- postman/
-- evaluation/
-- README.md
-- .gitignore
-- LICENSE
-- docker-compose.yml
+### Evaluation
 
+The project evaluation folder are organised as follows:
+
+- **notes/** – Architecture diagrams and implementation notes.
+- **screenshots/** – System screenshots grouped by Kaggle prototype and business-oriented model.
+- **results/** – Performance evaluation outputs and metrics.
+- **jmeter_tests/** – Apache JMeter test plans and load-testing resources.
 
 ### Installation:
 
@@ -93,10 +120,30 @@ The solution follows a microservice-based architecture where the Java Spring Boo
 - docker compose up --build
 
 
-### API Endpoint:
+### API Endpoint
 
-/api/transactions
+The fraud detection service exposes a RESTful API for evaluating banking transactions in real time.
 
+```http
+POST /api/transactions
+```
+#### Example Request
+
+```json
+{
+  "transactionAmount": 2500,
+  "merchant": "Amazon",
+  "country": "South Africa"
+}
+```
+#### Example Response
+
+```json
+{
+  "riskScore": 0.91,
+  "decision": "REJECT"
+}
+```
 ### Machine Learning Development
 
 During the development of this project, two machine learning models were evaluated.
@@ -106,6 +153,11 @@ The initial prototype was trained using the publicly available Kaggle Credit Car
 As the project progressed, the implementation was enhanced by replacing the initial dataset with a business-oriented synthetic banking transaction dataset. Unlike the Kaggle dataset, which primarily contains anonymised numerical features, the business-oriented dataset includes realistic banking attributes such as customer profiles, merchant information, transaction types, countries, currencies, timestamps, and transaction amounts.
 
 This transition allowed the final fraud detection microservice to better represent real-world banking scenarios and produce predictions using transaction data that more closely resembles those processed by modern financial institutions.
+
+| Phase | Dataset | Purpose |
+|--------|----------|---------|
+| Prototype | Kaggle Credit Card Fraud Dataset | Model development and API validation |
+| Final System | Business-Oriented Synthetic Banking Dataset | Realistic banking transaction simulation |
 
 ### Performance Results:
 
@@ -119,6 +171,8 @@ The results demonstrate that the system achieves high predictive performance whi
 | Recall    | 90.75% |
 | F1 Score  | 92.34% |
 | AUC       | 99.28% |
+
+The reported metrics correspond to the final business-oriented synthetic banking transaction dataset rather than the initial Kaggle prototype.
 
 ### Future Improvements:
 
