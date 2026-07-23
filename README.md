@@ -4,7 +4,11 @@
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-green)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue)
+![Postman](https://img.shields.io/badge/Postman-API_Testing-FF6C37)
+![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D)
+![JMeter](https://img.shields.io/badge/Apache_JMeter-Performance_Testing-D22128)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ## Design and Development of an AI-Driven Real-Time Fraud Detection Microservice Using Java Spring Boot and Machine Learning for Banking Transactions
@@ -46,7 +50,15 @@ Dr Jovan Pehcevski
 
 ### System Architecture:
 
+The solution follows a microservice-based architecture where the Java Spring Boot backend receives incoming banking transactions through a REST API. Transactions are forwarded to a Python FastAPI machine learning service, which returns a fraud prediction. Based on the prediction score, the backend applies business decision thresholds to approve, review, or reject the transaction before storing the result in PostgreSQL. Docker Compose orchestrates all services, ensuring consistent deployment and communication between components.
 
+<p align="center">
+  <a href="evaluation/notes/system-architecture-diagram.jpg">
+    <img src="evaluation/notes/system-architecture-diagram.jpg"
+         alt="System Architecture"
+         width="700">
+  </a>
+</p>
 
 ### Technology Stack:
 
